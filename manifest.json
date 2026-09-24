@@ -1,0 +1,21 @@
+{
+  "name": "وزارة الدفاع — المركز الإعلامي",
+  "short_name": "المركز الإعلامي",
+  "description": "المركز الإعلامي الرسمي لوزارة الدفاع في الجمهورية العربية السورية.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0d08",
+  "theme_color": "#0d1108",
+  "categories": ["news"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect fill='%230d1108' width='512' height='512' rx='96'/%3E%3Cpath d='M256 96 384 148v144c0 104-64 176-128 200-64-24-128-96-128-200V148z' fill='none' stroke='%23c9a34e' stroke-width='16'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
