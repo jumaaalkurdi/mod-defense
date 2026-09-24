@@ -3,408 +3,656 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#06070a">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>وزارة الدفاع — المركز الإعلامي الرسمي</title>
-<meta name="description" content="المركز الإعلامي الرسمي لوزارة الدفاع في الجمهورية العربية السورية.">
-<meta name="theme-color" content="#0d1108">
-<meta name="color-scheme" content="dark">
+<meta name="description" content="البوابة الإعلامية الرسمية لوزارة الدفاع في الجمهورية العربية السورية">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600;700;800;900&family=Black+Ops+One&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 42 10v14c0 11-7.5 18.5-18 21C13.5 42.5 6 35 6 24V10z' fill='none' stroke='%23c9a34e' stroke-width='3'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="styles.css">
-<link rel="manifest" href="manifest.json">
 </head>
 <body>
 
-<div class="bg-layer" aria-hidden="true">
-  <img id="bgCustomImg" class="bg-layer__img" alt="">
-  <div id="bgSvg" class="bg-layer__svg"></div>
-  <div class="bg-layer__overlay"></div>
-  <div class="bg-layer__grain"></div>
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى الرئيسي</a>
+<div class="read-progress" id="readProgress" aria-hidden="true"></div>
+<div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+<div class="bg-scene" aria-hidden="true">
+  <img class="bg-scene__custom" id="bgCustomImg" alt="">
+  <svg class="bg-scene__svg" id="bgSvg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <radialGradient id="sunGrad" cx="75%" cy="22%" r="55%">
+        <stop offset="0" stop-color="#f5e0a5" stop-opacity=".95"/>
+        <stop offset=".35" stop-color="#c9a34e" stop-opacity=".35"/>
+        <stop offset="1" stop-color="#c9a34e" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a2210"/>
+        <stop offset=".5" stop-color="#0f1408"/>
+        <stop offset="1" stop-color="#05060a"/>
+      </linearGradient>
+      <linearGradient id="duneBack" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2d3d20" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#0d1108" stop-opacity=".95"/>
+      </linearGradient>
+      <linearGradient id="duneMid" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1e2a15" stop-opacity=".85"/>
+        <stop offset="1" stop-color="#06070a"/>
+      </linearGradient>
+      <linearGradient id="groundDark" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#131a0d"/>
+        <stop offset="1" stop-color="#030405"/>
+      </linearGradient>
+    </defs>
+    <rect width="1920" height="1080" fill="url(#sky)"/>
+    <circle cx="1440" cy="240" r="380" fill="url(#sunGrad)"/>
+    <circle cx="1440" cy="240" r="90" fill="#f5e0a5" opacity=".8"/>
+    <path d="M0 720 Q 320 660 640 690 T 1280 680 T 1920 660 L 1920 1080 L 0 1080 Z" fill="url(#duneBack)"/>
+    <g transform="translate(1050, 700)" opacity=".9">
+      <ellipse cx="180" cy="170" rx="280" ry="18" fill="#000" opacity=".55"/>
+      <rect x="100" y="-40" width="180" height="62" rx="4" fill="#06070a" stroke="#c9a34e" stroke-width="1.4"/>
+      <rect x="280" y="-30" width="260" height="14" fill="#06070a" stroke="#c9a34e" stroke-width="1.2"/>
+      <path d="M30 -16 L 400 -16 L 430 26 L 430 80 L 15 80 L 0 26 Z" fill="#06070a" stroke="#c9a34e" stroke-width="1.6"/>
+      <rect x="0" y="80" width="445" height="42" rx="6" fill="#030405" stroke="#c9a34e" stroke-width="1.2"/>
+      <circle cx="30" cy="101" r="18" fill="none" stroke="#1a1f12" stroke-width="3.5"/>
+      <circle cx="110" cy="101" r="18" fill="none" stroke="#1a1f12" stroke-width="3.5"/>
+      <circle cx="190" cy="101" r="18" fill="none" stroke="#1a1f12" stroke-width="3.5"/>
+      <circle cx="270" cy="101" r="18" fill="none" stroke="#1a1f12" stroke-width="3.5"/>
+      <circle cx="350" cy="101" r="18" fill="none" stroke="#1a1f12" stroke-width="3.5"/>
+    </g>
+    <path d="M0 820 Q 400 780 800 800 T 1600 790 T 1920 780 L 1920 1080 L 0 1080 Z" fill="url(#duneMid)"/>
+    <path d="M0 950 Q 500 900 1000 930 T 1920 920 L 1920 1080 L 0 1080 Z" fill="url(#groundDark)"/>
+  </svg>
+  <div class="bg-scene__overlay"></div>
+  <div class="bg-scene__grid"></div>
+  <div class="bg-scene__scanlines"></div>
+  <div class="bg-scene__vignette"></div>
 </div>
 
-<div id="readProgress" class="read-progress" aria-hidden="true"></div>
+<div class="command-bar">
+  <div class="container command-bar__inner">
+    <div class="command-bar__group">
+      <span class="command-bar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z" stroke-linejoin="round"/></svg>
+        <strong>الجمهورية العربية السورية</strong>
+      </span>
+      <span class="command-bar__item command-bar__item--hide">
+        <span class="status-dot"></span>النظام: <strong>يعمل</strong>
+      </span>
+    </div>
+    <div class="command-bar__group">
+      <span class="command-bar__item command-bar__item--hide">
+        <span class="status-dot status-dot--amber"></span>مستوى الاستعداد: <strong>مرتفع</strong>
+      </span>
+      <span class="command-bar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        info@mod.gov.sy
+      </span>
+    </div>
+  </div>
+</div>
 
-<header id="header" class="header">
+<div class="ticker" role="region" aria-label="آخر الأخبار العاجلة">
+  <div class="ticker__label">
+    <span class="dot" aria-hidden="true"></span>
+    <span>عــاجــل الآن</span>
+  </div>
+  <div class="ticker__viewport">
+    <div class="ticker__track" id="tickerTrack"></div>
+  </div>
+</div>
+
+<header class="header" id="header">
   <div class="container header__inner">
-    <button id="navToggle" class="nav-toggle" aria-label="القائمة" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-
-    <a class="brand" href="#home" aria-label="الرئيسية">
-      <span id="brandMark" class="brand__mark"></span>
+    <a class="brand" id="brandLogo" aria-label="وزارة الدفاع">
+      <span class="brand__mark" id="brandMark" aria-hidden="true">
+        <svg viewBox="0 0 48 48">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f5e0a5"/>
+              <stop offset=".55" stop-color="#c9a34e"/>
+              <stop offset="1" stop-color="#8a6620"/>
+            </linearGradient>
+          </defs>
+          <path d="M24 3 42 10v14c0 11-7.5 18.5-18 21C13.5 42.5 6 35 6 24V10z" fill="none" stroke="url(#g1)" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M24 13.5l2.7 5.7 6.2.9-4.5 4.3 1.1 6.1L24 27.6l-5.5 2.9 1.1-6.1-4.5-4.3 6.2-.9z" fill="url(#g1)"/>
+        </svg>
+      </span>
       <span class="brand__text">
-        <span class="brand__title">المركز الإعلامي</span>
-        <span class="brand__sub">وزارة الدفاع — الجمهورية العربية السورية</span>
+        <strong class="brand__title" id="brandTitle">وزارة الدفاع</strong>
+        <span class="brand__sub" id="brandSub">الجمهورية العربية السورية</span>
       </span>
     </a>
-
-    <nav class="nav" aria-label="التنقل الرئيسي">
-      <ul id="navList" class="nav__list"></ul>
-    </nav>
-
+    <nav class="nav" aria-label="التنقل الرئيسي"><ul class="nav__list" id="navList"></ul></nav>
     <div class="header__actions">
-      <button id="installBtn" class="icon-btn icon-btn--install" aria-label="تثبيت التطبيق" title="تثبيت التطبيق" style="display:none">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12M7 10l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 21h14" stroke-linecap="round"/></svg>
+      <button class="notify-btn" id="notifyBtn" type="button" aria-label="تفعيل الإشعارات" title="تفعيل الإشعارات">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
       </button>
-      <button id="notifyBtn" class="icon-btn" aria-label="الإشعارات" title="الإشعارات">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8" stroke-linecap="round"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" stroke-linecap="round"/></svg>
+      <span class="live-badge"><span class="dot" aria-hidden="true"></span><span>بث مباشر</span></span>
+      <span class="clock" id="clock" aria-label="الوقت الحالي">00:00:00</span>
+      <button class="nav__toggle" id="navToggle" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="drawer">
+        <span></span><span></span><span></span>
       </button>
-      <button class="icon-btn" aria-label="بحث" onclick="window.openDrawer && window.openDrawer()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
-      </button>
-      <button id="adminBtn" class="icon-btn icon-btn--gold" aria-label="الدخول الإداري" title="الدخول الإداري">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z"/><circle cx="12" cy="11" r="2"/><path d="M12 13v4"/></svg>
-      </button>
-      <span id="clock" class="header__clock" aria-hidden="true">00:00:00</span>
     </div>
   </div>
 </header>
 
-<aside id="drawer" class="drawer" aria-hidden="true">
+<div class="drawer" id="drawer" role="navigation" aria-label="القائمة الرئيسية">
   <div class="drawer__inner">
+    <div class="drawer__welcome">
+      <div class="drawer__welcome-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="drawer__welcome-text">
+        <span class="drawer__welcome-title">المركز الإعلامي الرسمي</span>
+        <span class="drawer__welcome-sub">وزارة الدفاع — سوريا</span>
+      </div>
+    </div>
     <div class="drawer__search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
-      <input id="drawerSearch" type="search" placeholder="ابحث في الأخبار..." aria-label="بحث">
+      <input type="search" id="drawerSearch" placeholder="ابحث في الأخبار والبيانات..." aria-label="بحث" autocomplete="off">
     </div>
-    <nav id="drawerList" class="drawer__list" aria-label="قائمة جانبية"></nav>
-    <div class="drawer__social">
-      <a href="https://t.me/mod_defense_sy" target="_blank" rel="noopener" aria-label="Telegram">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 3 2 11l5.6 2.3L20 6 9.5 15.4 10 20l3-3.3L18.5 20 22 3Z"/></svg>
-      </a>
-      <a href="https://x.com/mod_defense_sy" target="_blank" rel="noopener" aria-label="X">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 3H21l-6.6 7.6L22 21h-6.3l-4.6-6-5.3 6H3l7-8L2.3 3H8.7l4.2 5.5L18.2 3Z"/></svg>
-      </a>
+    <div class="drawer__section">
+      <h3 class="drawer__section-title">إجراءات سريعة</h3>
+      <div class="drawer__quick">
+        <button class="drawer__quick-btn" data-nav="news-archive">
+          <span class="drawer__quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5" stroke-linecap="round"/></svg></span>
+          آخر الأخبار
+        </button>
+        <button class="drawer__quick-btn" data-nav="official-news">
+          <span class="drawer__quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z" stroke-linejoin="round"/></svg></span>
+          البيانات الرسمية
+        </button>
+        <button class="drawer__quick-btn" data-nav="elite-units">
+          <span class="drawer__quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z" stroke-linejoin="round"/><path d="M12 7l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5-3.6-3.5 5-.7z" stroke-linejoin="round"/></svg></span>
+          الفرق القتالية
+        </button>
+        <button class="drawer__quick-btn" data-nav="electronic-army">
+          <span class="drawer__quick-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 22h8M12 18v4M7 9l3 3-3 3M13 15h4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          الجيش الإلكتروني
+        </button>
+      </div>
     </div>
-  </div>
-</aside>
-<div id="drawerOverlay" class="drawer-overlay" aria-hidden="true"></div>
-
-<div class="ticker" role="region" aria-label="شريط عاجل">
-  <div class="container ticker__inner">
-    <span class="ticker__label"><span class="dot"></span> عاجل</span>
-    <div class="ticker__viewport"><div id="tickerTrack" class="ticker__track"></div></div>
+    <div class="drawer__section">
+      <h3 class="drawer__section-title">الأقسام الرئيسية</h3>
+      <div class="drawer__list" id="drawerList"></div>
+    </div>
+    <div class="drawer__section">
+      <h3 class="drawer__section-title">قنوات الطوارئ</h3>
+      <div class="drawer__contact">
+        <a class="drawer__contact-row" href="tel:+963110000000">
+          <span class="drawer__contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z" stroke-linejoin="round"/></svg></span>
+          <span class="drawer__contact-text">
+            <span class="drawer__contact-label">الخط الساخن</span>
+            <span class="drawer__contact-value">+963 11 000 0000</span>
+          </span>
+        </a>
+        <a class="drawer__contact-row" href="mailto:info@mod.gov.sy">
+          <span class="drawer__contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="drawer__contact-text">
+            <span class="drawer__contact-label">البريد الرسمي</span>
+            <span class="drawer__contact-value">info@mod.gov.sy</span>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="drawer__version">
+      <strong>وزارة الدفاع</strong> — الإصدار 7.0 · <span id="drawerYear">2026</span>
+    </div>
   </div>
 </div>
 
 <main id="main">
 
-  <div id="pageHome" class="page-view is-active" data-page="home">
+  <div class="page-view is-active" data-page="home" id="pageHome">
+
+    <section class="quran-section" aria-label="آية قرآنية">
+      <div class="quran-section__bg"></div>
+      <div class="quran-section__pattern"></div>
+      <div class="container">
+        <div class="quran-section__inner reveal">
+          <span class="quran-ornament quran-ornament--tl" aria-hidden="true"><svg viewBox="0 0 60 60" fill="none" stroke="#c9a34e" stroke-width="1.2"><path d="M2 2 L28 2 L28 6 L6 6 L6 28 L2 28 Z" fill="#c9a34e" opacity=".9"/><path d="M10 10 Q 20 10, 20 20 Q 20 14, 28 14" opacity=".6"/><circle cx="14" cy="14" r="2" fill="#c9a34e"/></svg></span>
+          <span class="quran-ornament quran-ornament--tr" aria-hidden="true"><svg viewBox="0 0 60 60" fill="none" stroke="#c9a34e" stroke-width="1.2"><path d="M2 2 L28 2 L28 6 L6 6 L6 28 L2 28 Z" fill="#c9a34e" opacity=".9"/><path d="M10 10 Q 20 10, 20 20 Q 20 14, 28 14" opacity=".6"/><circle cx="14" cy="14" r="2" fill="#c9a34e"/></svg></span>
+          <span class="quran-ornament quran-ornament--bl" aria-hidden="true"><svg viewBox="0 0 60 60" fill="none" stroke="#c9a34e" stroke-width="1.2"><path d="M2 2 L28 2 L28 6 L6 6 L6 28 L2 28 Z" fill="#c9a34e" opacity=".9"/><path d="M10 10 Q 20 10, 20 20 Q 20 14, 28 14" opacity=".6"/><circle cx="14" cy="14" r="2" fill="#c9a34e"/></svg></span>
+          <span class="quran-ornament quran-ornament--br" aria-hidden="true"><svg viewBox="0 0 60 60" fill="none" stroke="#c9a34e" stroke-width="1.2"><path d="M2 2 L28 2 L28 6 L6 6 L6 28 L2 28 Z" fill="#c9a34e" opacity=".9"/><path d="M10 10 Q 20 10, 20 20 Q 20 14, 28 14" opacity=".6"/><circle cx="14" cy="14" r="2" fill="#c9a34e"/></svg></span>
+          <span class="quran-section__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M5 5l7 5 7-5M5 19l7-5 7 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            من كتاب الله تعالى
+          </span>
+          <p class="quran-verse" lang="ar">وَأَعِدُّوا لَهُم مَّا اسْتَطَعْتُم مِّن قُوَّةٍ وَمِن رِّبَاطِ الْخَيْلِ تُرْهِبُونَ بِهِ عَدُوَّ اللَّهِ وَعَدُوَّكُمْ</p>
+          <div class="quran-verse__divider" aria-hidden="true">
+            <span class="quran-verse__divider-line"></span>
+            <span class="quran-verse__divider-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2 L20 7 L20 17 L12 22 L4 17 L4 7 Z" stroke-linejoin="round"/><path d="M12 7 L16 9.5 L16 14.5 L12 17 L8 14.5 L8 9.5 Z" stroke-linejoin="round"/></svg></span>
+            <span class="quran-verse__divider-line"></span>
+          </div>
+          <p class="quran-verse__reference"><strong>سورة الأنفال</strong> — الآية <strong>٦٠</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="flag-section" aria-label="علم الجمهورية العربية السورية">
+      <div class="container">
+        <div class="flag-section__inner reveal">
+          <span class="flag-section__label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z" stroke-linejoin="round"/></svg>
+            رمز السيادة الوطنية
+          </span>
+          <div class="flag-display" id="flagDisplay">
+            <div class="flag-display__glow"></div>
+          </div>
+          <p class="flag-section__caption">
+            علم الجمهورية العربية السورية
+            <small>رمز الوطن — درع السيادة — فخر الأجيال</small>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro-banner">
+      <div class="container intro-banner__content">
+        <div class="intro-banner__text reveal">
+          <span class="intro-banner__eyebrow"><span class="status-dot"></span>البوابة الإعلامية الرسمية</span>
+          <h2 class="intro-banner__title">صوت المؤسسة العسكرية <span class="intro-banner__gold">الرسمي</span></h2>
+          <p class="intro-banner__desc">منصة إعلامية موحّدة تنقل الأخبار العاجلة والبيانات الرسمية لوزارة الدفاع في الجمهورية العربية السورية.</p>
+          <div class="intro-banner__stats">
+            <span class="intro-banner__stat"><strong>+48</strong>خدمة إلكترونية</span>
+            <span class="intro-banner__stat"><strong>96%</strong>معدل الرضا</span>
+            <span class="intro-banner__stat"><strong>24/7</strong>تغطية إخبارية</span>
+          </div>
+        </div>
+        <div class="intro-banner__video reveal" style="--d:.1s" id="playVideo">
+          <img class="intro-banner__video-img" id="videoThumb" alt="غلاف الفيديو" loading="lazy">
+          <div class="intro-banner__play">
+            <span class="intro-banner__play-circle"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </div>
+          <span class="intro-banner__video-caption"><span class="dot"></span>القوات المسلحة — في الميدان</span>
+        </div>
+      </div>
+    </section>
 
     <section class="hero">
-      <div class="container hero__inner">
-        <article id="featuredCard" class="featured reveal"></article>
-        <aside class="hero__side">
-          <div class="stack">
-            <div class="stack__header">
-              <span class="section-head__eyebrow">مباشر</span>
-              <h2 class="stack__title">الأكثر تداولاً</h2>
-            </div>
-            <div id="stackContainer" class="stack__container"></div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="news" class="news-section">
       <div class="container">
-        <div class="section-head">
-          <div class="section-head__left">
-            <span class="section-head__eyebrow">آخر المستجدات</span>
-            <h2 class="section-head__title">الأخبار <span class="section-head__count">(<span id="newsCount">0</span>)</span></h2>
-          </div>
-          <div class="filters" role="tablist">
-            <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">الكل <span data-count-for="all">0</span></button>
-            <button class="filter" data-filter="breaking" role="tab" aria-selected="false">عاجل <span data-count-for="breaking">0</span></button>
-            <button class="filter" data-filter="official" role="tab" aria-selected="false">رسمي <span data-count-for="official">0</span></button>
-            <button class="filter" data-filter="reports" role="tab" aria-selected="false">تقارير <span data-count-for="reports">0</span></button>
-            <button class="filter" data-filter="condolence" role="tab" aria-selected="false">تعازي <span data-count-for="condolence">0</span></button>
-          </div>
-        </div>
-        <div id="newsGrid" class="news" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <section class="split-section">
-      <div class="container split-section__inner">
-        <div class="mostread">
-          <div class="section-head section-head--tight">
-            <div class="section-head__left">
-              <span class="section-head__eyebrow">ترتيب تفاعلي</span>
-              <h2 class="section-head__title">الأكثر قراءة</h2>
-            </div>
-          </div>
-          <div id="mostReadList" class="mostread__list"></div>
-        </div>
-        <div class="video-block">
-          <div class="section-head section-head--tight">
-            <div class="section-head__left">
-              <span class="section-head__eyebrow">بث رسمي</span>
-              <h2 class="section-head__title">الإصدار المرئي</h2>
-            </div>
-          </div>
-          <div class="video">
-            <img id="videoThumb" class="video__thumb" alt="" loading="lazy">
-            <button id="playVideo" class="video__play" aria-label="تشغيل الفيديو">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-            <div class="video__meta">
-              <span class="video__label">البيان اليومي</span>
-              <h3 class="video__title">المركز الإعلامي الرسمي</h3>
-            </div>
-          </div>
+        <div class="hero__grid">
+          <article class="featured reveal" id="featuredCard"></article>
+          <div class="stack" id="stackContainer"></div>
         </div>
       </div>
     </section>
 
-    <section class="flag-section">
+    <section class="section" id="news">
       <div class="container">
-        <div class="section-head section-head--center">
-          <span class="section-head__eyebrow">الرمز الوطني</span>
-          <h2 class="section-head__title">علم الجمهورية العربية السورية</h2>
+        <header class="section__bar reveal">
+          <div>
+            <span class="section__eyebrow">المركز الإعلامي</span>
+            <h2 class="section__title">آخر الأخبار والبيانات</h2>
+          </div>
+          <div class="filters" role="tablist" aria-label="تصفية الأخبار">
+            <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">الكل <span class="filter__count" data-count-for="all">0</span></button>
+            <button class="filter" data-filter="breaking" role="tab" aria-selected="false">عاجل <span class="filter__count" data-count-for="breaking">0</span></button>
+            <button class="filter" data-filter="official" role="tab" aria-selected="false">رسمي <span class="filter__count" data-count-for="official">0</span></button>
+            <button class="filter" data-filter="reports" role="tab" aria-selected="false">تقارير <span class="filter__count" data-count-for="reports">0</span></button>
+            <button class="filter" data-filter="condolence" role="tab" aria-selected="false">تعازي <span class="filter__count" data-count-for="condolence">0</span></button>
+          </div>
+        </header>
+        <div class="layout">
+          <div class="news" id="newsGrid"></div>
+          <aside class="sidebar" aria-label="شريط جانبي">
+            <section class="widget reveal">
+              <div class="widget__head">
+                <h3 class="widget__title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 7h7v7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  الأكثر قراءة
+                </h3>
+                <span class="widget__badge">اليوم</span>
+              </div>
+              <div class="mostread" id="mostReadList"></div>
+            </section>
+            <section class="widget reveal" style="--d:.08s">
+              <div class="widget__head">
+                <h3 class="widget__title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z" stroke-linejoin="round"/></svg>
+                  قنوات رسمية
+                </h3>
+              </div>
+              <div class="official">
+                <a class="official__row" href="tel:+963110000000">
+                  <span class="official__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z" stroke-linejoin="round"/></svg></span>
+                  <div><div class="official__label">الخط الساخن</div><div class="official__value">+963 11 000 0000</div></div>
+                </a>
+                <a class="official__row" href="mailto:info@mod.gov.sy">
+                  <span class="official__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <div><div class="official__label">البريد الرسمي</div><div class="official__value">info@mod.gov.sy</div></div>
+                </a>
+              </div>
+            </section>
+          </aside>
         </div>
-        <div id="flagDisplay" class="flag-display"></div>
       </div>
     </section>
-
   </div>
 
-  <div class="page-view" data-page="news-archive"></div>
   <div class="page-view" data-page="about"></div>
-  <div class="page-view" data-page="contact"></div>
-  <div class="page-view" data-page="elite-units"></div>
+  <div class="page-view" data-page="structure"></div>
+  <div class="page-view" data-page="leadership"></div>
+  <div class="page-view" data-page="jobs"></div>
+  <div class="page-view" data-page="archive"></div>
+  <div class="page-view" data-page="news-archive"></div>
+  <div class="page-view" data-page="official-news"></div>
+  <div class="page-view" data-page="reports"></div>
+  <div class="page-view" data-page="media-center"></div>
+  <div class="page-view" data-page="services"></div>
   <div class="page-view" data-page="privacy"></div>
+  <div class="page-view" data-page="terms"></div>
+  <div class="page-view" data-page="accessibility"></div>
+  <div class="page-view" data-page="electronic-army"></div>
+  <div class="page-view" data-page="weapons-dev"></div>
+  <div class="page-view" data-page="projects"></div>
+  <div class="page-view" data-page="elite-units"></div>
   <div class="page-view" data-page="article"></div>
   <div class="page-view" data-page="mostread-article"></div>
-
 </main>
 
 <footer class="footer">
-  <div class="container">
-    <div class="footer__grid">
-      <div class="footer__brand">
-        <div class="footer__mark" aria-hidden="true">
-          <svg viewBox="0 0 48 48"><defs><linearGradient id="fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f5e0a5"/><stop offset=".55" stop-color="#c9a34e"/><stop offset="1" stop-color="#8a6620"/></linearGradient></defs><path d="M24 3 42 10v14c0 11-7.5 18.5-18 21C13.5 42.5 6 35 6 24V10z" fill="none" stroke="url(#fg)" stroke-width="2.2"/><path d="M24 13.5l2.7 5.7 6.2.9-4.5 4.3 1.1 6.1L24 27.6l-5.5 2.9 1.1-6.1-4.5-4.3 6.2-.9z" fill="url(#fg)"/></svg>
-        </div>
-        <h3 class="footer__title">المركز الإعلامي الرسمي</h3>
-        <p class="footer__desc">المنصة الرسمية لنشر الأخبار والبيانات الصادرة عن وزارة الدفاع في الجمهورية العربية السورية.</p>
-      </div>
-      <div class="footer__col">
-        <h4 class="footer__heading">روابط سريعة</h4>
-        <ul class="footer__list">
-          <li><a data-nav="home">الرئيسية</a></li>
-          <li><a data-nav="news-archive">أرشيف الأخبار</a></li>
-          <li><a data-nav="elite-units">الفرق القتالية</a></li>
-          <li><a data-nav="about">عن المركز</a></li>
-          <li><a data-nav="contact">اتصل بنا</a></li>
-          <li><a data-nav="privacy">سياسة الخصوصية</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h4 class="footer__heading">تواصل رسمي</h4>
-        <ul class="footer__list">
-          <li><a href="https://t.me/mod_defense_sy" target="_blank" rel="noopener">Telegram</a></li>
-          <li><a href="https://x.com/mod_defense_sy" target="_blank" rel="noopener">منصة X</a></li>
-        </ul>
-      </div>
+  <div class="container footer__grid">
+    <div>
+      <a class="brand" data-nav="home" aria-label="وزارة الدفاع">
+        <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 3 42 10v14c0 11-7.5 18.5-18 21C13.5 42.5 6 35 6 24V10z" fill="none" stroke="#c9a34e" stroke-width="2.2" stroke-linejoin="round"/><path d="M24 13.5l2.7 5.7 6.2.9-4.5 4.3 1.1 6.1L24 27.6l-5.5 2.9 1.1-6.1-4.5-4.3 6.2-.9z" fill="#c9a34e"/></svg></span>
+        <span class="brand__text">
+          <strong class="brand__title">وزارة الدفاع</strong>
+          <span class="brand__sub">الجمهورية العربية السورية</span>
+        </span>
+      </a>
+      <p class="footer__about">المركز الإعلامي الرسمي — جميع الأخبار والبيانات المنشورة هنا معتمدة ورسمية.</p>
     </div>
-    <div class="footer__bottom">
-      <span>© <span id="year">2025</span> وزارة الدفاع — الجمهورية العربية السورية</span>
-      <span class="footer__badge">موقع رسمي محمي</span>
+    <nav aria-label="روابط الوزارة">
+      <h3 class="footer__title">الوزارة</h3>
+      <ul class="footer__links">
+        <li><a data-nav="about">عن الوزارة</a></li>
+        <li><a data-nav="structure">الهيكل التنظيمي</a></li>
+        <li><a data-nav="leadership">القيادة</a></li>
+        <li><a data-nav="jobs">الوظائف</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="الأقسام المتخصصة">
+      <h3 class="footer__title">الأقسام المتخصصة</h3>
+      <ul class="footer__links">
+        <li><a data-nav="elite-units">الفرق القتالية</a></li>
+        <li><a data-nav="electronic-army">الجيش الإلكتروني</a></li>
+        <li><a data-nav="weapons-dev">تطوير الأسلحة</a></li>
+        <li><a data-nav="projects">أهم المشاريع</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h3 class="footer__title">تواصل</h3>
+      <ul class="footer__links footer__links--plain">
+        <li><span dir="ltr">+963 11 000 0000</span></li>
+        <li><span dir="ltr">info@mod.gov.sy</span></li>
+        <li>دمشق — الجمهورية العربية السورية</li>
+      </ul>
     </div>
+  </div>
+  <div class="container footer__bottom">
+    <p>© <span id="year">2026</span> وزارة الدفاع — الجمهورية العربية السورية. جميع الحقوق محفوظة.</p>
+    <ul class="footer__legal">
+      <li><a data-nav="privacy">سياسة الخصوصية</a></li>
+      <li><a data-nav="terms">شروط الاستخدام</a></li>
+      <li><a data-nav="accessibility">إمكانية الوصول</a></li>
+    </ul>
   </div>
 </footer>
 
-<button id="toTop" class="to-top" aria-label="أعلى الصفحة">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 14 6-6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<button class="to-top" id="toTop" type="button" aria-label="العودة إلى الأعلى">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 
-<div id="toastContainer" class="toast-container" role="status" aria-live="polite"></div>
-
-<div id="adminLogin" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
-  <div class="modal__dialog">
-    <button id="adminLoginClose" class="modal__close" aria-label="إغلاق">✕</button>
-    <div class="login-hero">
-      <div class="login-hero__icon">
-        <svg viewBox="0 0 48 48"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f5e0a5"/><stop offset="1" stop-color="#8a6620"/></linearGradient></defs><path d="M24 3 42 10v14c0 11-7.5 18.5-18 21C13.5 42.5 6 35 6 24V10z" fill="none" stroke="url(#lg)" stroke-width="2.5"/><path d="M24 17v8M24 29h.01" stroke="url(#lg)" stroke-width="2.5" stroke-linecap="round"/></svg>
-      </div>
-      <span class="login-hero__eyebrow">الدخول الإداري</span>
-      <h2 class="login-hero__title">مفتاح الوصول</h2>
-      <p class="login-hero__desc">أدخل مفتاح GitHub الشخصي للوصول إلى لوحة التحكم.</p>
+<div class="admin-login" id="adminLogin" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="admin-login__box">
+    <button class="admin-login__close" id="adminLoginClose" type="button" aria-label="إغلاق">✕</button>
+    <div class="admin-login__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="1.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke-linecap="round"/><circle cx="12" cy="15.5" r="1.5" fill="currentColor"/></svg>
     </div>
-    <form id="loginForm" class="login-form" autocomplete="off">
-      <label class="admin-field">
-        <span class="admin-field__label">GitHub Personal Access Token</span>
-        <input id="loginToken" type="password" required dir="ltr" placeholder="ghp_..." autocomplete="off" spellcheck="false">
-      </label>
-      <label class="login-form__remember">
-        <input type="checkbox" id="loginRemember" checked>
-        <span>تذكّرني على هذا الجهاز</span>
-      </label>
-      <div class="login-form__actions">
-        <button type="submit" class="btn btn--gold"><span id="loginSubmitLabel">دخول</span></button>
-        <button type="button" id="adminCancel" class="btn btn--ghost">إلغاء</button>
-      </div>
-      <a href="https://github.com/settings/tokens/new?scopes=repo&description=Mod+Defense+Admin" target="_blank" rel="noopener" class="login-form__link">إنشاء مفتاح جديد على GitHub ↗</a>
-    </form>
+    <h3 class="admin-login__title">لوحة التحكم</h3>
+    <p class="admin-login__sub">منطقة مقيدة — الدخول للمخوّلين فقط</p>
+    <label class="admin-login__label" for="adminPass">كلمة المرور</label>
+    <input class="admin-login__input" id="adminPass" type="password" autocomplete="off" spellcheck="false" placeholder="••••••••••••">
+    <div class="admin-login__error" id="adminErr"></div>
+    <div class="admin-login__actions">
+      <button class="btn btn--outline" id="adminCancel" type="button">إلغاء</button>
+      <button class="btn btn--gold" id="adminSubmit" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        دخول
+      </button>
+    </div>
   </div>
 </div>
 
-<div id="adminPanel" class="admin-panel" aria-hidden="true" role="dialog" aria-modal="true">
-  <div class="admin-panel__inner">
-    <header class="admin-panel__header">
-      <div class="admin-panel__header-left">
-        <span class="admin-panel__badge">لوحة التحكم</span>
-        <div>
-          <h2 class="admin-panel__title">إدارة المركز الإعلامي</h2>
-          <span id="adminUserEmail" class="admin-panel__user"></span>
-        </div>
-      </div>
-      <div class="admin-panel__header-actions">
-        <button id="adminReset" class="btn btn--ghost btn--sm">استعادة</button>
-        <button id="adminLogout" class="btn btn--danger btn--sm">خروج</button>
-        <button id="adminClose" class="icon-btn" aria-label="إغلاق">✕</button>
-      </div>
-    </header>
+<div class="admin-panel" id="adminPanel" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="admin-panel__header">
+    <div class="admin-panel__title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z" stroke-linejoin="round"/></svg>
+      <div>لوحة التحكم<small>لوحة الإدارة الشاملة</small></div>
+    </div>
+    <div class="admin-panel__header-actions">
+      <button class="btn btn--outline btn--sm" type="button" id="adminReset">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        استعادة
+      </button>
+      <button class="btn btn--danger btn--sm" type="button" id="adminLogout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        خروج
+      </button>
+    </div>
+  </div>
 
-    <nav class="admin-tabs">
-      <button class="admin-tab is-active" data-tab="news">الأخبار</button>
-      <button class="admin-tab" data-tab="ticker">الشريط</button>
-      <button class="admin-tab" data-tab="mostread">الأكثر قراءة</button>
-      <button class="admin-tab" data-tab="elite">الفرق</button>
-      <button class="admin-tab" data-tab="settings">الإعدادات</button>
-    </nav>
+  <div class="admin-tabs">
+    <button class="admin-tab is-active" data-tab="news">الأخبار</button>
+    <button class="admin-tab" data-tab="ticker">الشريط العاجل</button>
+    <button class="admin-tab" data-tab="mostread">الأكثر قراءة</button>
+    <button class="admin-tab" data-tab="elite">الفرق القتالية</button>
+    <button class="admin-tab" data-tab="settings">الإعدادات</button>
+  </div>
 
-    <div class="admin-panel__body">
+  <div class="admin-panel__body">
 
-      <div class="admin-tab-content is-active" data-tab-content="news">
-        <div class="admin-form-card">
-          <h3 id="formSectionTitle" class="admin-form-card__title">إضافة خبر جديد</h3>
-          <form id="newsForm" class="admin-form">
-            <input type="hidden" id="editId">
-            <div class="admin-form__row">
-              <label class="admin-field"><span class="admin-field__label">التصنيف</span>
-                <select id="formCat">
-                  <option value="breaking">عاجل</option>
-                  <option value="official">بيان رسمي</option>
-                  <option value="reports" selected>تقرير</option>
-                  <option value="condolence">تعازي</option>
-                </select>
-              </label>
-              <label class="admin-field"><span class="admin-field__label">المصدر</span><input id="formSource" required></label>
+    <div class="admin-tab-content is-active" data-tab-content="news">
+      <div class="admin-grid">
+        <div class="admin-section">
+          <div class="admin-section__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+            <span id="formSectionTitle">إضافة خبر جديد</span>
+          </div>
+          <form class="admin-form" id="newsForm">
+            <input type="hidden" id="editId" value="">
+            <div class="admin-form__row--split">
+              <div><label for="formCat">التصنيف</label><select id="formCat" required><option value="breaking">عاجل</option><option value="official">رسمي</option><option value="reports">تقرير</option><option value="condolence">تعازي</option></select></div>
+              <div><label for="formSource">المصدر</label><input type="text" id="formSource" placeholder="مثال: القيادة العامة" required></div>
             </div>
-            <label class="admin-field"><span class="admin-field__label">العنوان</span><input id="formNewsTitle" required></label>
-            <label class="admin-field"><span class="admin-field__label">المقتطف</span><textarea id="formExcerpt" rows="2" required></textarea></label>
-            <label class="admin-field"><span class="admin-field__label">التفاصيل الكاملة</span><textarea id="formDetails" rows="6"></textarea></label>
-            <div class="admin-form__row">
-              <label class="admin-field"><span class="admin-field__label">صورة البطاقة</span><input id="formImage" dir="ltr"></label>
-              <label class="admin-field"><span class="admin-field__label">صورة المقال</span><input id="formArticleImage" dir="ltr"></label>
+            <div class="admin-form__row"><label for="formNewsTitle">العنوان</label><input type="text" id="formNewsTitle" placeholder="عنوان الخبر..." required></div>
+            <div class="admin-form__row"><label for="formExcerpt">المقتطف</label><textarea id="formExcerpt" placeholder="مقتطف قصير..." required></textarea></div>
+            <div class="admin-form__row"><label for="formDetails">التفاصيل الكاملة</label><textarea id="formDetails" class="tall" placeholder="اترك سطراً فارغاً بين الفقرات..."></textarea></div>
+            <div class="admin-form__row--split">
+              <div><label for="formImage">صورة رئيسية (رابط)</label><input type="url" id="formImage" placeholder="https://..."></div>
+              <div><label for="formArticleImage">صورة إضافية (رابط)</label><input type="url" id="formArticleImage" placeholder="https://..."></div>
             </div>
             <div class="admin-form__actions">
-              <button type="submit" class="btn btn--gold"><span id="formSubmitLabel">حفظ</span></button>
-              <button type="button" id="formCancel" class="btn btn--ghost" style="display:none">إلغاء</button>
+              <button class="btn btn--gold" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="formSubmitLabel">حفظ الخبر</span></button>
+              <button class="btn btn--outline" type="button" id="formCancel" style="display:none;">إلغاء</button>
             </div>
           </form>
         </div>
-        <div id="adminList" class="admin-list"></div>
+        <div class="admin-section">
+          <div class="admin-section__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10" stroke-linecap="round"/></svg>
+            الأخبار (<span id="newsCount">0</span>)
+          </div>
+          <div class="admin-list" id="adminList"></div>
+        </div>
       </div>
+    </div>
 
-      <div class="admin-tab-content" data-tab-content="ticker">
-        <div class="admin-form-card">
-          <h3 class="admin-form-card__title">تحرير الشريط العاجل</h3>
-          <p class="admin-hint">سطر لكل خبر. لربط وقت بالخبر استخدم <code>|</code> كفاصل.</p>
-          <form id="tickerForm" class="admin-form">
-            <label class="admin-field"><span class="admin-field__label">عناصر الشريط</span><textarea id="tickerInput" rows="10"></textarea></label>
+    <div class="admin-tab-content" data-tab-content="ticker">
+      <div class="admin-section" style="max-width:900px;margin:0 auto;">
+        <div class="admin-section__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+          إدارة الشريط العاجل
+        </div>
+        <form class="admin-form" id="tickerForm">
+          <div class="admin-form__row">
+            <label for="tickerInput">نص الشريط (خبر في كل سطر — استخدم | لفصل الوقت)</label>
+            <textarea id="tickerInput" class="tall" placeholder="مثال:&#10;القيادة العامة تعلن عن بيان هام | منذ 5 د&#10;افتتاح معرض التسليح الدولي | منذ 30 د"></textarea>
+            <small style="display:block;margin-top:8px;color:var(--text-3);font-size:11.5px;font-family:'Noto Kufi Arabic',sans-serif;">💡 نصيحة: اكتب خبراً واحداً في كل سطر. لإضافة وقت، افصل بين الخبر والوقت بعلامة | (مثال: نص الخبر | منذ 5 د)</small>
+          </div>
+          <div class="admin-form__actions">
+            <button class="btn btn--gold" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg>حفظ الشريط</button>
+            <button class="btn btn--outline" type="button" id="tickerReset">استعادة الافتراضي</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="admin-tab-content" data-tab-content="mostread">
+      <div class="admin-grid">
+        <div class="admin-section">
+          <div class="admin-section__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+            <span id="mrFormTitle">إضافة عنصر</span>
+          </div>
+          <form class="admin-form" id="mrForm">
+            <input type="hidden" id="mrEditId" value="">
+            <div class="admin-form__row"><label for="mrTitle">العنوان</label><input type="text" id="mrTitle" required></div>
+            <div class="admin-form__row--split">
+              <div><label for="mrViews">القراءات</label><input type="text" id="mrViews" value="1.2 مليون قراءة"></div>
+              <div><label for="mrImage">صورة (رابط)</label><input type="url" id="mrImage"></div>
+            </div>
+            <div class="admin-form__row"><label for="mrArticle">المقال الكامل</label><textarea id="mrArticle" class="tall" required></textarea></div>
             <div class="admin-form__actions">
-              <button type="submit" class="btn btn--gold">حفظ</button>
-              <button type="button" id="tickerReset" class="btn btn--ghost">مسح الكل</button>
+              <button class="btn btn--gold" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="mrSubmitLabel">حفظ</span></button>
+              <button class="btn btn--outline" type="button" id="mrCancel" style="display:none;">إلغاء</button>
             </div>
           </form>
         </div>
+        <div class="admin-section">
+          <div class="admin-section__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10" stroke-linecap="round"/></svg>
+            القائمة (<span id="mrCount">0</span>)
+          </div>
+          <div class="admin-list" id="mrAdminList"></div>
+        </div>
       </div>
+    </div>
 
-      <div class="admin-tab-content" data-tab-content="mostread">
-        <div class="admin-form-card">
-          <h3 id="mrFormTitle" class="admin-form-card__title">إضافة عنصر</h3>
-          <form id="mrForm" class="admin-form">
-            <input type="hidden" id="mrEditId">
-            <div class="admin-form__row">
-              <label class="admin-field"><span class="admin-field__label">العنوان</span><input id="mrTitle" required></label>
-              <label class="admin-field"><span class="admin-field__label">التسمية</span><input id="mrViews" placeholder="12K قراءة"></label>
+    <div class="admin-tab-content" data-tab-content="elite">
+      <div class="admin-grid">
+        <div class="admin-section">
+          <div class="admin-section__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+            <span id="eliteFormTitle">إضافة فرقة</span>
+          </div>
+          <form class="admin-form" id="eliteForm">
+            <input type="hidden" id="eliteEditId" value="">
+            <div class="admin-form__row--split">
+              <div><label for="eliteName">اسم الفرقة</label><input type="text" id="eliteName" required></div>
+              <div><label for="eliteMotto">الشعار</label><input type="text" id="eliteMotto"></div>
             </div>
-            <label class="admin-field"><span class="admin-field__label">صورة (URL)</span><input id="mrImage" dir="ltr"></label>
-            <label class="admin-field"><span class="admin-field__label">المقال الكامل</span><textarea id="mrArticle" rows="7" required></textarea></label>
+            <div class="admin-form__row"><label for="eliteDesc">الوصف</label><textarea id="eliteDesc" required></textarea></div>
+            <div class="admin-form__row"><label for="eliteMissions">المهام (كل مهمة في سطر)</label><textarea id="eliteMissions"></textarea></div>
+            <div class="admin-form__row--split">
+              <div><label for="eliteStat1">إحصائية 1</label><input type="text" id="eliteStat1"></div>
+              <div><label for="eliteStat1Label">وصف 1</label><input type="text" id="eliteStat1Label"></div>
+            </div>
+            <div class="admin-form__row--split">
+              <div><label for="eliteStat2">إحصائية 2</label><input type="text" id="eliteStat2"></div>
+              <div><label for="eliteStat2Label">وصف 2</label><input type="text" id="eliteStat2Label"></div>
+            </div>
+            <div class="admin-form__row--split">
+              <div><label for="eliteStat3">إحصائية 3</label><input type="text" id="eliteStat3"></div>
+              <div><label for="eliteStat3Label">وصف 3</label><input type="text" id="eliteStat3Label"></div>
+            </div>
             <div class="admin-form__actions">
-              <button type="submit" class="btn btn--gold"><span id="mrSubmitLabel">حفظ</span></button>
-              <button type="button" id="mrCancel" class="btn btn--ghost" style="display:none">إلغاء</button>
+              <button class="btn btn--gold" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="eliteSubmitLabel">حفظ</span></button>
+              <button class="btn btn--outline" type="button" id="eliteCancel" style="display:none;">إلغاء</button>
             </div>
           </form>
         </div>
-        <div id="mrAdminList" class="admin-list"></div>
-      </div>
-
-      <div class="admin-tab-content" data-tab-content="elite">
-        <div class="admin-form-card">
-          <h3 id="eliteFormTitle" class="admin-form-card__title">إضافة فرقة</h3>
-          <form id="eliteForm" class="admin-form">
-            <input type="hidden" id="eliteEditId">
-            <div class="admin-form__row">
-              <label class="admin-field"><span class="admin-field__label">اسم الفرقة</span><input id="eliteName" required></label>
-              <label class="admin-field"><span class="admin-field__label">الشعار</span><input id="eliteMotto"></label>
-            </div>
-            <label class="admin-field"><span class="admin-field__label">الوصف</span><textarea id="eliteDesc" rows="3" required></textarea></label>
-            <label class="admin-field"><span class="admin-field__label">المهام (سطر لكل مهمة)</span><textarea id="eliteMissions" rows="4"></textarea></label>
-            <div class="admin-form__row">
-              <label class="admin-field"><span class="admin-field__label">إحصاء 1</span><input id="eliteStat1"></label>
-              <label class="admin-field"><span class="admin-field__label">وسم 1</span><input id="eliteStat1Label"></label>
-            </div>
-            <div class="admin-form__row">
-              <label class="admin-field"><span class="admin-field__label">إحصاء 2</span><input id="eliteStat2"></label>
-              <label class="admin-field"><span class="admin-field__label">وسم 2</span><input id="eliteStat2Label"></label>
-            </div>
-            <div class="admin-form__row">
-              <label class="admin-field"><span class="admin-field__label">إحصاء 3</span><input id="eliteStat3"></label>
-              <label class="admin-field"><span class="admin-field__label">وسم 3</span><input id="eliteStat3Label"></label>
-            </div>
-            <div class="admin-form__actions">
-              <button type="submit" class="btn btn--gold"><span id="eliteSubmitLabel">حفظ</span></button>
-              <button type="button" id="eliteCancel" class="btn btn--ghost" style="display:none">إلغاء</button>
-            </div>
-          </form>
+        <div class="admin-section">
+          <div class="admin-section__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10" stroke-linecap="round"/></svg>
+            الفرق (<span id="eliteCount">0</span>)
+          </div>
+          <div class="admin-list" id="eliteAdminList"></div>
         </div>
-        <div id="eliteAdminList" class="admin-list"></div>
       </div>
+    </div>
 
-      <div class="admin-tab-content" data-tab-content="settings">
-        <div class="admin-form-card">
-          <h3 class="admin-form-card__title">إعدادات الموقع</h3>
+    <div class="admin-tab-content" data-tab-content="settings">
+      <div class="admin-grid">
+        <div class="admin-section">
+          <div class="admin-section__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24" stroke-linecap="round"/></svg>
+            إعدادات الموقع
+          </div>
           <div class="admin-form">
-            <label class="admin-field"><span class="admin-field__label">رابط الشعار</span><input id="formLogoImage" dir="ltr"></label>
-            <div id="logoPreview" class="img-preview" style="display:none"><img id="logoPreviewImg" alt=""></div>
-            <small id="logoPreviewHint" class="admin-hint" style="display:none"></small>
-
-            <label class="admin-field"><span class="admin-field__label">رابط العلم</span><input id="formFlagImage" dir="ltr"></label>
-            <div id="flagPreview" class="img-preview" style="display:none"><img id="flagPreviewImg" alt=""></div>
-            <small id="flagPreviewHint" class="admin-hint" style="display:none"></small>
-
-            <label class="admin-field"><span class="admin-field__label">رابط الفيديو</span><input id="formVideoUrl" dir="ltr"></label>
-            <label class="admin-field"><span class="admin-field__label">صورة الفيديو</span><input id="formVideoThumb" dir="ltr"></label>
-            <div id="thumbPreview" class="img-preview" style="display:none"><img id="thumbPreviewImg" alt=""></div>
-            <small id="thumbPreviewHint" class="admin-hint" style="display:none"></small>
-
-            <label class="admin-field"><span class="admin-field__label">صورة الخلفية</span><input id="formBgImage" dir="ltr"></label>
-            <div id="bgPreview" class="img-preview" style="display:none"><img id="bgPreviewImg" alt=""></div>
-
+            <div class="admin-form__row">
+              <label for="formLogoImage">رابط شعار الموقع</label>
+              <input type="url" id="formLogoImage" placeholder="https://example.com/logo.png">
+              <div class="admin-preview" id="logoPreview"><img id="logoPreviewImg" alt="معاينة الشعار"></div>
+              <div class="admin-preview-hint" id="logoPreviewHint"></div>
+            </div>
+            <div class="admin-form__row">
+              <label for="formFlagImage">رابط صورة العلم</label>
+              <input type="url" id="formFlagImage" placeholder="https://example.com/flag.jpg">
+              <div class="admin-preview" id="flagPreview"><img id="flagPreviewImg" alt="معاينة العلم"></div>
+              <div class="admin-preview-hint" id="flagPreviewHint"></div>
+            </div>
+            <div class="admin-form__row">
+              <label for="formVideoUrl">رابط الفيديو التعريفي</label>
+              <input type="url" id="formVideoUrl" placeholder="https://youtube.com/watch?v=...">
+            </div>
+            <div class="admin-form__row">
+              <label for="formVideoThumb">صورة غلاف الفيديو</label>
+              <input type="url" id="formVideoThumb" placeholder="اتركها فارغة للاستخراج التلقائي">
+              <div class="admin-preview" id="thumbPreview"><img id="thumbPreviewImg" alt="معاينة الغلاف"></div>
+              <div class="admin-preview-hint" id="thumbPreviewHint"></div>
+            </div>
+            <div class="admin-form__row">
+              <label for="formBgImage">رابط خلفية الموقع</label>
+              <input type="url" id="formBgImage" placeholder="https://example.com/bg.jpg">
+              <div class="admin-preview" id="bgPreview"><img id="bgPreviewImg" alt="معاينة الخلفية"></div>
+            </div>
             <div class="admin-form__actions">
-              <button type="button" id="saveSettings" class="btn btn--gold">حفظ الإعدادات</button>
-              <button type="button" id="clearSettings" class="btn btn--ghost">مسح</button>
+              <button class="btn btn--gold" type="button" id="saveSettings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg>حفظ الإعدادات</button>
+              <button class="btn btn--outline" type="button" id="clearSettings">مسح الكل</button>
             </div>
           </div>
         </div>
-      </div>
 
+        <div class="admin-section">
+          <div class="admin-section__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1" stroke-linecap="round"/></svg>
+            معلومات النظام
+          </div>
+          <div class="sys-info">
+            <p><strong>الإصدار:</strong> 7.0</p>
+            <p><strong>الأخبار:</strong> <span id="infoNewsCount">0</span></p>
+            <p><strong>الأكثر قراءة:</strong> <span id="infoMrCount">0</span></p>
+            <p><strong>الفرق:</strong> <span id="infoEliteCount">0</span></p>
+            <p><strong>أخبار الشريط:</strong> <span id="infoTickerCount">0</span></p>
+            <hr>
+            <p class="sys-info__note">🕌 <strong>المفتاح:</strong> الحروف المقطعة اليومية</p>
+            <p class="sys-info__note">🔒 <strong>الحماية:</strong> XOR + Rate Limiting + Session Timeout</p>
+            <p class="sys-info__note">🎭 <strong>الفخ:</strong> Decoy Admin مُفعّل</p>
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>
 
+<script src="security.js"></script>
 <script src="data.js"></script>
-<script type="module" src="js/app.js"></script>
-
+<script src="app.js"></script>
 </body>
 </html>

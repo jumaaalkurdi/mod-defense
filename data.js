@@ -1,65 +1,101 @@
-window.__data = (function(){
-  'use strict';
+(function(){
+'use strict';
 
-  const NAV_ITEMS = [
-    { page:'home',         label:'الرئيسية',      icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m3 11 9-8 9 8v10a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1z"/></svg>' },
-    { page:'news-archive', label:'أرشيف الأخبار', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>' },
-    { page:'elite-units',  label:'الفرق القتالية', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z"/></svg>' },
-    { page:'about',        label:'عن المركز',     icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>' },
-    { page:'contact',      label:'اتصل بنا',      icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v14H4z"/><path d="m4 6 8 6 8-6"/></svg>' },
-    { page:'privacy',      label:'الخصوصية',      icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z"/></svg>' }
-  ];
+window.__data = {
 
-  const PAGES = {
-    'news-archive': {
-      title:'أرشيف الأخبار', eyebrow:'الأرشيف',
-      desc:'جميع الأخبار والبيانات المنشورة.',
-      icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>',
-      blocks:[{ title:'قيد التطوير', body:'سيتم عرض الأرشيف الكامل قريباً.', isComing:true }]
-    },
-    'about': {
-      title:'عن المركز الإعلامي', eyebrow:'من نحن',
-      desc:'المركز الإعلامي الرسمي لوزارة الدفاع في الجمهورية العربية السورية.',
-      icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>',
-      blocks:[
-        { title:'الرسالة', body:'نشر المعلومات الرسمية الدقيقة والموثوقة حول أنشطة وزارة الدفاع والقوات المسلحة، وتوفير مصدر موحد وآمن للأخبار والبيانات الرسمية.' },
-        { title:'الرؤية', body:'أن نكون المصدر الأول والموثوق للمعلومة العسكرية الرسمية، بمعايير مهنية عالمية وشفافية تامة.' },
-        { title:'قيمنا', list:['الدقة في نقل المعلومة','الشفافية والوضوح','الاحترافية العسكرية','الحياد والموضوعية','خدمة الوطن والمواطن'] }
-      ]
-    },
-    'contact': {
-      title:'اتصل بنا', eyebrow:'التواصل الرسمي',
-      desc:'قنوات التواصل الرسمية للمركز الإعلامي.',
-      icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v14H4z"/><path d="m4 6 8 6 8-6"/></svg>',
-      blocks:[
-        { title:'القنوات الرسمية', grid:[
-          { icon:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 3 2 11l5.6 2.3L20 6 9.5 15.4 10 20l3-3.3L18.5 20 22 3Z"/></svg>', title:'Telegram', desc:'@mod_defense_sy' },
-          { icon:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 3H21l-6.6 7.6L22 21h-6.3l-4.6-6-5.3 6H3l7-8L2.3 3H8.7l4.2 5.5L18.2 3Z"/></svg>', title:'X (Twitter)', desc:'@mod_defense_sy' }
-        ]},
-        { title:'للمخوّلين', body:'للتواصل حول الشؤون الرسمية، يرجى استخدام قنوات الاتصال المدرجة في البيانات الرسمية.' }
-      ]
-    },
-    'elite-units': {
-      title:'الفرق القتالية المتميزة', eyebrow:'نخبة عسكرية',
-      desc:'وحدات النخبة في الجيش العربي السوري.',
-      icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z"/></svg>',
-      custom:'elite'
-    },
-    'privacy': {
-      title:'سياسة الخصوصية', eyebrow:'الخصوصية',
-      desc:'كيفية تعاملنا مع بياناتك.',
-      icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z"/></svg>',
-      blocks:[
-        { title:'جمع البيانات', body:'لا نقوم بجمع أي بيانات شخصية عن الزوار. تسجيل الدخول مخصص فقط للمخوّلين الإداريين.' },
-        { title:'ملفات تعريف الارتباط', body:'نستخدم تخزين المتصفح المحلي لأغراض تشغيلية فقط.' },
-        { title:'الأمان', body:'جميع الاتصالات مشفّرة عبر HTTPS، والمصادقة تتم عبر مزوّد موثوق.' }
-      ]
-    }
-  };
+  DEFAULT_NEWS: [
+    { id:'n1', cat:'breaking', source:'القيادة العامة', title:'القيادة العامة تعلن بدء المرحلة الثانية من برنامج التحديث المؤسسي الشامل', excerpt:'تشمل المرحلة أتمتة الإجراءات الإدارية وتطوير منظومة التدريب ورفع كفاءة الخدمات.', details:'أعلنت القيادة العامة للجيش والقوات المسلحة عن انطلاق المرحلة الثانية من برنامج التحديث المؤسسي الشامل.\n\nتشمل المرحلة الجديدة محاور رئيسية متعددة: أتمتة الإجراءات الإدارية بالكامل، تطوير منظومة التدريب والتأهيل، رفع كفاءة الخدمات المقدَّمة للعسكريين والمتقاعدين وأسر الشهداء.\n\nوأكدت القيادة أن الخطة الزمنية معلنة وشفافة.', image:'https://images.unsplash.com/photo-1579912437766-789d8ac7bd97?w=800&q=80', articleImage:'', addedAt: Date.now() - 6*60*1000 },
+    { id:'n2', cat:'official', source:'المكتب الإعلامي', title:'وزارة الدفاع تنفي بشكل قاطع ما تداولته بعض المنصات حول تعديلات على قانون الخدمة', excerpt:'دعت الوزارة وسائل الإعلام إلى اعتماد البيانات الصادرة عن قنواتها الرسمية حصراً.', details:'نفت وزارة الدفاع بشكل قاطع ما تداولته بعض المنصات الإعلامية حول وجود تعديلات على قانون الخدمة العسكرية.\n\nوأكدت أن كل ما يُنشر من مصادر غير رسمية لا أساس له من الصحة.\n\nوشددت على أنها ستحتفظ بحقها القانوني في ملاحقة كل من يروّج لمعلومات كاذبة تمس المصلحة العامة.', image:'https://images.unsplash.com/photo-1569304662755-6dd7c5607b51?w=800&q=80', articleImage:'', addedAt: Date.now() - 18*60*1000 },
+    { id:'n3', cat:'reports', source:'هيئة التدريب', title:'افتتاح الدورة المتقدمة لضباط الأركان في الأكاديمية العسكرية العليا', excerpt:'تستمر الدورة اثني عشر أسبوعاً وتشمل محاور التخطيط الاستراتيجي وإدارة الأزمات.', details:'افتتحت الأكاديمية العسكرية العليا الدورة المتقدمة لضباط الأركان بحضور عدد من القيادات العسكرية العليا.\n\nتستمر الدورة اثني عشر أسبوعاً، وتشمل محاور متقدمة في التخطيط الاستراتيجي، إدارة الأزمات، وأنظمة القيادة والسيطرة الحديثة.\n\nتهدف الدورة إلى رفع كفاءة الضباط وتأهيلهم لتحمّل المسؤوليات القيادية على أعلى المستويات.', image:'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=800&q=80', articleImage:'', addedAt: Date.now() - 42*60*1000 },
+    { id:'n4', cat:'official', source:'العلاقات الدولية', title:'توقيع مذكرة تفاهم في مجال الطب العسكري وإدارة الطوارئ', excerpt:'تتضمن المذكرة تبادل الخبرات في طب الكوارث والإسعاف الميداني.', details:'وقّعت وزارة الدفاع مذكرة تفاهم في مجال الطب العسكري وإدارة الطوارئ، في خطوة تعزز التعاون الدولي.\n\nتتضمن المذكرة تبادل الخبرات في طب الكوارث، الإسعاف الميداني، وتنظيم برامج تدريبية مشتركة وفق أفضل المعايير الدولية المعتمدة.', image:'https://images.unsplash.com/photo-1583324113626-70df0f4deaab?w=800&q=80', articleImage:'', addedAt: Date.now() - 75*60*1000 },
+    { id:'n5', cat:'official', source:'المديرية الإدارية', title:'تعميم إداري بشأن مواعيد التسجيل في برامج رعاية المتقاعدين العسكريين', excerpt:'يبدأ التسجيل إلكترونياً عبر البوابة الرسمية اعتباراً من مطلع الأسبوع المقبل.', details:'أصدرت المديرية الإدارية تعميماً بشأن مواعيد التسجيل في برامج رعاية المتقاعدين العسكريين.\n\nيبدأ التسجيل إلكترونياً عبر البوابة الرسمية اعتباراً من مطلع الأسبوع المقبل، مع إعطاء أولوية للطلبات المكتملة الوثائق.', image:'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80', articleImage:'', addedAt: Date.now() - 120*60*1000 },
+    { id:'n6', cat:'reports', source:'وحدة الهندسة', title:'تقرير: جهود وحدات الهندسة العسكرية في مشاريع إعادة الإعمار', excerpt:'استعرض التقرير إنجازات الوحدات في إزالة المخلفات الحربية وتأمين الطرق.', details:'استعرض تقرير رسمي صادر عن وحدة الهندسة العسكرية الإنجازات التي حققتها الوحدات في مشاريع إعادة الإعمار.\n\nشمل التقرير جهود إزالة المخلفات الحربية، تأمين الطرق، وإعادة تأهيل البنية التحتية في عدد من المناطق.', image:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80', articleImage:'', addedAt: Date.now() - 180*60*1000 },
+    { id:'n7', cat:'breaking', source:'هيئة الأركان', title:'القائد العام يترأس اجتماعاً موسعاً لهيئة الأركان العامة لبحث الجاهزية', excerpt:'ناقش الاجتماع مستويات الجاهزية القتالية ونتائج التمارين الأخيرة.', details:'ترأس القائد العام للجيش والقوات المسلحة اجتماعاً موسعاً لهيئة الأركان العامة، بحضور القادة والمسؤولين العسكريين.\n\nناقش الاجتماع مستويات الجاهزية القتالية لجميع التشكيلات، ونتائج التمارين الأخيرة، وخطط تطوير القدرات خلال المرحلة المقبلة.', image:'https://images.unsplash.com/photo-1579912437766-789d8ac7bd97?w=800&q=80', articleImage:'', addedAt: Date.now() - 12*60*1000 },
+    { id:'n8', cat:'condolence', source:'المركز الإعلامي', title:'بيان تعازي في استشهاد عدد من رجال الجيش العربي السوري أثناء أداء الواجب', excerpt:'تتقدّم وزارة الدفاع من ذوي الشهداء الأبرار بأحرّ التعازي.', details:'تتقدّم وزارة الدفاع من ذوي الشهداء الأبرار بأحرّ التعازي والمواساة، سائلة المولى عز وجل أن يتغمدهم بواسع رحمته.\n\nإنا لله وإنا إليه راجعون.', image:'https://images.unsplash.com/photo-1591552170914-3a2e0e29a1f2?w=800&q=80', articleImage:'', addedAt: Date.now() - 200*60*1000 }
+  ],
 
-  const FLAG_SVG = '<svg viewBox="0 0 900 450" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="fld" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0e7a3c"/><stop offset="1" stop-color="#0a5b2c"/></linearGradient></defs><rect width="900" height="150" fill="url(#fld)"/><rect y="150" width="900" height="150" fill="#ffffff"/><rect y="300" width="900" height="150" fill="#0a0a0a"/><g fill="#c94040" transform="translate(330 75)"><path d="M60 0l14.1 43.4h45.6L82.8 70.2l14.1 43.4L60 86.8 23.1 113.6l14.1-43.4L0 43.4h45.6z"/></g><g fill="#0e7a3c" transform="translate(420 75)"><path d="M60 0l14.1 43.4h45.6L82.8 70.2l14.1 43.4L60 86.8 23.1 113.6l14.1-43.4L0 43.4h45.6z"/></g><g fill="#c94040" transform="translate(510 75)"><path d="M60 0l14.1 43.4h45.6L82.8 70.2l14.1 43.4L60 86.8 23.1 113.6l14.1-43.4L0 43.4h45.6z"/></g></svg>';
+  DEFAULT_TICKER: [
+    { text:'القيادة العامة تعلن بدء المرحلة الثانية من برنامج التحديث المؤسسي', time:'منذ 6 د' },
+    { text:'وزارة الدفاع تنفي ما تداولته بعض المنصات حول تعديلات على قانون الخدمة', time:'منذ 18 د' },
+    { text:'افتتاح الدورة المتقدمة لضباط الأركان في الأكاديمية العسكرية العليا', time:'منذ 42 د' },
+    { text:'توقيع مذكرة تفاهم في مجال الطب العسكري وإدارة الطوارئ', time:'منذ 1 س' },
+    { text:'تعميم إداري بشأن مواعيد التسجيل لبرامج رعاية المتقاعدين العسكريين', time:'منذ 2 س' },
+    { text:'بيان تعازي في استشهاد عدد من رجال الجيش العربي السوري', time:'منذ 3 س' }
+  ],
 
-  const FALLBACK_THUMB = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"><rect fill="#0d1108" width="640" height="360"/><g fill="none" stroke="#c9a34e" stroke-width="2" opacity=".35"><path d="M320 80 460 130v110c0 80-55 135-140 155-85-20-140-75-140-155V130z"/><circle cx="320" cy="180" r="40"/><path d="M320 220v60"/></g></svg>');
+  DEFAULT_SETTINGS: {
+    videoUrl: '',
+    videoThumb: '',
+    bgImage: '',
+    flagImage: '',
+    logoImage: ''
+  },
 
-  return { NAV_ITEMS, PAGES, FLAG_SVG, FALLBACK_THUMB, VERSION: '3.0.1' };
+  DEFAULT_MOSTREAD: [
+    { id:'m1', title:'القيادة العامة تعلن بدء المرحلة الثانية من برنامج التحديث المؤسسي', views:'1.2 مليون قراءة', image:'', article:'في خطوة تعزز مسار التحديث، أعلنت القيادة العامة عن انطلاق المرحلة الثانية من البرنامج الشامل.\n\nتشمل المرحلة أتمتة الإجراءات، تطوير التدريب، ورفع كفاءة الخدمات للعسكريين والمتقاعدين وأسر الشهداء.' },
+    { id:'m2', title:'وزارة الدفاع تنفي ما تداولته بعض المنصات حول قانون الخدمة', views:'842 ألف قراءة', image:'', article:'نفت وزارة الدفاع بشكل قاطع ما تداولته بعض المنصات حول تعديلات على قانون الخدمة العسكرية.\n\nوأكدت أن كل ما يُنشر من مصادر غير رسمية لا أساس له من الصحة.' },
+    { id:'m3', title:'افتتاح الدورة المتقدمة لضباط الأركان في الأكاديمية العسكرية', views:'511 ألف قراءة', image:'', article:'افتتحت الأكاديمية العسكرية العليا الدورة المتقدمة لضباط الأركان بمشاركة نخبة من الضباط.\n\nتستمر الدورة اثني عشر أسبوعاً.' },
+    { id:'m4', title:'مذكرة تفاهم في مجال الطب العسكري وإدارة الطوارئ', views:'368 ألف قراءة', image:'', article:'وقّعت وزارة الدفاع مذكرة تفاهم في مجال الطب العسكري وإدارة الطوارئ.\n\nتتضمن المذكرة تبادل الخبرات وبرامج تدريبية مشتركة.' },
+    { id:'m5', title:'تعميم إداري بشأن مواعيد التسجيل لبرامج رعاية المتقاعدين', views:'297 ألف قراءة', image:'', article:'أصدرت المديرية الإدارية تعميماً بشأن مواعيد التسجيل في برامج رعاية المتقاعدين العسكريين.\n\nيبدأ التسجيل إلكترونياً عبر البوابة الرسمية.' }
+  ],
+
+  DEFAULT_ELITE: [
+    { id:'e1', name:'القوات الخاصة', motto:'القوة، الدقة، الإتقان', desc:'وحدة النخبة الأعلى في الجيش العربي السوري، مخصصة للعمليات الخاصة عالية الخطورة.', missions:['عمليات الاقتحام والاقتحام المضاد','عمليات الاستطلاع العميق','مكافحة الإرهاب','تحرير الرهائن','عمليات خلف خطوط العدو'], stat1:'+500', stat1Label:'عملية ناجحة', stat2:'99%', stat2Label:'نسبة النجاح', stat3:'24/7', stat3Label:'جاهزية دائمة' },
+    { id:'e2', name:'الحرس الجمهوري', motto:'درع الوطن الحصين', desc:'القوة النخبوية المكلفة بحماية القيادة والمقرات الاستراتيجية والمهام الحساسة.', missions:['حماية القيادة العليا','حماية المنشآت الحيوية','تدخل سريع في الأزمات','عمليات حفظ الأمن الداخلي'], stat1:'+40', stat1Label:'سنة خبرة', stat2:'100%', stat2Label:'ولاء', stat3:'24/7', stat3Label:'حماية' },
+    { id:'e3', name:'الوحدات المحمولة جواً', motto:'من السماء إلى النصر', desc:'قوات مظلية مدربة على القفز والعمليات الجوية الخاصة والانتشار السريع.', missions:['الإنزال المظلي','السيطرة على المطارات','العمليات الجوية الخاصة','الانتشار السريع'], stat1:'+300', stat1Label:'قفزة', stat2:'98%', stat2Label:'دقة', stat3:'سريع جداً', stat3Label:'انتشار' },
+    { id:'e4', name:'القوات البحرية الخاصة', motto:'سيّد السواحل', desc:'وحدة خاصة مدربة على العمليات القتالية تحت الماء وحماية السواحل.', missions:['مكافحة التسلل البحري','العمليات تحت الماء','حماية السفن والموانئ','الاستطلاع الساحلي'], stat1:'+150', stat1Label:'عملية', stat2:'96%', stat2Label:'نجاح', stat3:'مهنية عالية', stat3Label:'تدريب' },
+    { id:'e5', name:'صيادو الدبابات', motto:'دقة الموت', desc:'وحدة متخصصة في مكافحة المدرعات وتدمير الآليات الثقيلة بأسلحة متقدمة.', missions:['تدمير المدرعات','الكمائن المضادة للدروع','الدعم الناري المباشر','الاستطلاع المضاد للدروع'], stat1:'+400', stat1Label:'هدف مدمر', stat2:'97%', stat2Label:'دقة', stat3:'سري', stat3Label:'تخصص' },
+    { id:'e6', name:'الوحدة السيبرانية النخبوية', motto:'في الظل نصون الوطن', desc:'وحدة النخبة في الجيش السوري الإلكتروني، متخصصة في العمليات السيبرانية.', missions:['الدفاع عن البنية الرقمية','العمليات السيبرانية الخاصة','تأمين الاتصالات العليا','الاستجابة للحوادث الحساسة'], stat1:'+1000', stat1Label:'هجمة صُدّت', stat2:'100%', stat2Label:'سرية', stat3:'مستمر', stat3Label:'مراقبة' }
+  ],
+
+  FLAG_SVG: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" preserveAspectRatio="xMidYMid meet"><rect width="900" height="200" y="0" fill="#0d6b30"/><rect width="900" height="200" y="200" fill="#ffffff"/><rect width="900" height="200" y="400" fill="#000000"/><g fill="#c8102e"><path d="M320 300 l25-72 25 72 h-14 l-11-32 -11 32 z"/><path d="M450 300 l25-72 25 72 h-14 l-11-32 -11 32 z"/><path d="M580 300 l25-72 25 72 h-14 l-11-32 -11 32 z"/></g></svg>',
+
+  FALLBACK_THUMB: 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750"><rect width="1200" height="750" fill="#0f1408"/><circle cx="600" cy="375" r="90" fill="none" stroke="#c9a34e" stroke-width="3"/><path d="M575 340 L 575 410 L 640 375 Z" fill="#f5e0a5"/></svg>'),
+
+  NAV_ITEMS: [
+    { label:'الرئيسية', page:'home', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m3 11 9-8 9 8v10a2 2 0 0 1-2 2h-3v-7h-8v7H5a2 2 0 0 1-2-2Z" stroke-linejoin="round"/></svg>' },
+    { label:'الأخبار العاجلة', page:'news-archive', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5" stroke-linecap="round"/></svg>' },
+    { label:'البيانات الرسمية', page:'official-news', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z" stroke-linejoin="round"/></svg>' },
+    { label:'الفرق القتالية المتميزة', page:'elite-units', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z" stroke-linejoin="round"/><path d="M12 7l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5-3.6-3.5 5-.7z" stroke-linejoin="round"/></svg>' },
+    { label:'الجيش الإلكتروني', page:'electronic-army', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 22h8M12 18v4M7 9l3 3-3 3M13 15h4" stroke-linecap="round" stroke-linejoin="round"/></svg>' },
+    { label:'تطوير الأسلحة', page:'weapons-dev', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6" stroke-linecap="round"/></svg>' },
+    { label:'أهم المشاريع', page:'projects', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18" stroke-linecap="round"/><rect x="7" y="10" width="3" height="8"/><rect x="12" y="6" width="3" height="12"/><rect x="17" y="13" width="3" height="5"/></svg>' },
+    { label:'التقارير', page:'reports', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18" stroke-linecap="round"/><path d="M7 14l4-4 4 4 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>' },
+    { label:'الخدمات', page:'services', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4" stroke-linecap="round"/></svg>' },
+    { label:'عن الوزارة', page:'about', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1" stroke-linecap="round"/></svg>' },
+    { label:'الهيكل التنظيمي', page:'structure', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="2" width="6" height="6"/><rect x="2" y="16" width="6" height="6"/><rect x="16" y="16" width="6" height="6"/><path d="M12 8v4M5 16v-2h14v2" stroke-linecap="round"/></svg>' },
+    { label:'القيادة', page:'leadership', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="7" r="4"/><path d="M4 21v-2a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v2" stroke-linecap="round"/></svg>' },
+    { label:'الوظائف', page:'jobs', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3" stroke-linecap="round"/></svg>' },
+    { label:'الركن الإعلامي', page:'media-center', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="14" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 6V4h8v2" stroke-linecap="round"/></svg>' }
+  ],
+
+  PAGES: {
+    'elite-units': { eyebrow:'نخبة', title:'الفرق القتالية المتميزة', desc:'وحدات النخبة في الجيش العربي السوري — تدريب متقدم، مهام خاصة، وجاهزية دائمة.', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z" stroke-linejoin="round"/><path d="M12 7l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5-3.6-3.5 5-.7z" stroke-linejoin="round"/></svg>', custom:'elite' },
+    'electronic-army': { eyebrow:'سيبراني', title:'الجيش السوري الإلكتروني', desc:'الذراع السيبراني — حماية الفضاء الرقمي، ورصد التهديدات، ونشر الوعي.', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 22h8M12 18v4M7 9l3 3-3 3M13 15h4" stroke-linecap="round" stroke-linejoin="round"/></svg>', blocks:[{ title:'التعريف', body:'الجيش السوري الإلكتروني هو الوحدة المتخصصة في حماية الفضاء السيبراني للجمهورية العربية السورية، والتصدي للهجمات الإلكترونية التي تستهدف البنية التحتية الحيوية.' }, { title:'المهام الرئيسية', list:['حماية البنية التحتية الرقمية الحيوية','رصد التهديدات السيبرانية والتصدي لها','تأمين الشبكات العسكرية والاتصالات المشفّرة','تطوير القدرات الدفاعية السيبرانية','التعاون مع الجهات الوطنية والدولية','نشر الوعي الرقمي'] }] },
+    'weapons-dev': { eyebrow:'بحث وتطوير', title:'تطوير الأسلحة والأنظمة الدفاعية', desc:'منظومة وطنية للبحث والتطوير العسكري.', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6" stroke-linecap="round"/></svg>', blocks:[{ title:'الرؤية', body:'تحقيق الاكتفاء الذاتي وتوطين التقنيات الحديثة، وبناء قاعدة صناعية دفاعية وطنية.' }, { title:'مجالات التطوير', list:['تحديث الأنظمة المدرعة','تطوير الصواريخ','تحديث الاتصالات','الطائرات المسيّرة','الرؤية الليلية','الذخائر الذكية','الحرب الإلكترونية','الحماية الشخصية'] }] },
+    'projects': { eyebrow:'إنجازات', title:'أهم المشاريع الاستراتيجية', desc:'مشاريع وطنية كبرى.', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18" stroke-linecap="round"/><rect x="7" y="10" width="3" height="8"/><rect x="12" y="6" width="3" height="12"/><rect x="17" y="13" width="3" height="5"/></svg>', blocks:[{ title:'التحديث المؤسسي', body:'برنامج شامل يشمل الرقمنة الكاملة وأتمتة الإجراءات وتطوير الموارد البشرية.' }, { title:'المشاريع التكنولوجية', list:['مركز البيانات السيادي','منصة الخدمات الإلكترونية الموحدة','نظام القيادة والسيطرة','شبكة الاتصالات المشفّرة'] }] },
+    about: { eyebrow:'تعريف', title:'عن وزارة الدفاع', desc:'مؤسسة وطنية عريقة تحمل مسؤولية حماية السيادة الوطنية.', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z" stroke-linejoin="round"/></svg>', blocks:[{title:'الرسالة',body:'حماية السيادة الوطنية والحفاظ على أمن واستقرار الجمهورية العربية السورية.'},{title:'الرؤية',body:'الوصول إلى مؤسسة دفاعية بمستوى عالمي قادرة على مواجهة التحديات المعاصرة.'},{title:'القيم',list:['الوفاء للوطن','الانضباط','الشفافية','احترام حقوق الإنسان','التميّز']}]},
+    structure: { eyebrow:'تنظيم', title:'الهيكل التنظيمي', desc:'البنية المؤسسية لوزارة الدفاع.', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="2" width="6" height="6"/><rect x="2" y="16" width="6" height="6"/><rect x="16" y="16" width="6" height="6"/><path d="M12 8v4M5 16v-2h14v2" stroke-linecap="round"/></svg>', blocks:[{title:'القيادة العامة',body:'تدير شؤون الجيش والقوات المسلحة.'},{title:'هيئة الأركان',body:'التخطيط العسكري وإدارة العمليات.'},{title:'المديريات',list:['العمليات','الاستخبارات','الإمداد','التدريب','الشؤون الإدارية','الخدمات الطبية','الهندسة','الاتصالات','التطوع','القانونية']}]},
+    leadership: { eyebrow:'قيادة', title:'القيادة العسكرية العليا', desc:'قيادات الوزارة والقادة الميدانيون.', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="7" r="4"/><path d="M4 21v-2a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v2" stroke-linecap="round"/></svg>', blocks:[{title:'القائد العام',body:'يشرف على جميع فروع القوات المسلحة.'},{title:'رئيس هيئة الأركان',body:'تنفيذ التوجيهات وإدارة العمليات.'},{title:'قادة الفروع',list:['القوات البرية','القوات الجوية','القوات البحرية','الدفاع الجوي','الحرس الجمهوري','القوات الخاصة']}]},
+    jobs: { eyebrow:'فرص', title:'الوظائف والتطوع', desc:'فرص العمل والتطوع.', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3" stroke-linecap="round"/></svg>', blocks:[{title:'التطوع',body:'يُعلن عن فتح باب التطوع بشكل دوري.'},{title:'التخصصات',list:['الطب','الهندسة','تقنية المعلومات','الإدارة','اللغات','الطيران','البحرية']},{title:'الشروط',list:['الجنسية السورية','الفحوصات الطبية','الاختبارات البدنية','عدم وجود سوابق','اجتياز المقابلة']}]},
+    'news-archive': { eyebrow:'أخبار', title:'الأخبار العاجلة', desc:'جميع الأخبار العاجلة.', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5" stroke-linecap="round"/></svg>', blocks:[{title:'أحدث الأخبار',body:'يتم التحديث على مدار الساعة.'}]},
+    'official-news': { eyebrow:'رسمي', title:'البيانات الرسمية', desc:'البيانات والتصريحات الرسمية.', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z" stroke-linejoin="round"/></svg>', blocks:[{title:'البيانات',body:'تصدر بشكل دوري وتُنشر على البوابة الرسمية حصراً.'},{title:'تحذير',body:'تحذّر الوزارة من تداول أي بيانات من مصادر غير رسمية.'}]},
+    reports: { eyebrow:'تقارير', title:'التقارير والإحصاءات', desc:'تقارير دورية.', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18" stroke-linecap="round"/><path d="M7 14l4-4 4 4 5-5" stroke-linecap="round"/></svg>', blocks:[{title:'التقارير',body:'تقارير دورية عن الأنشطة.'},{title:'الأنواع',list:['الشهرية','السنوية','العمليات','إعادة الإعمار','التدريب']}]},
+    'media-center': { eyebrow:'إعلام', title:'الركن الإعلامي', desc:'الصور والفيديوهات.', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="14" rx="2"/><circle cx="12" cy="13" r="4"/></svg>', blocks:[{title:'المركز الإعلامي',body:'يوفّر المواد الإعلامية الرسمية.'},{title:'المواد',list:['صور','فيديوهات','بيانات','ملفات','هوية بصرية']}]},
+    services: { eyebrow:'خدمات', title:'الخدمات الإلكترونية', desc:'بوابة موحّدة للخدمات.', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4" stroke-linecap="round"/></svg>', blocks:[{title:'قيد التطوير',body:'نعمل على تطوير منظومة الخدمات الإلكترونية الموحّدة.',isComing:true}]},
+    privacy: { eyebrow:'قانوني', title:'سياسة الخصوصية', desc:'التزامنا بحماية خصوصية المستخدمين.', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke-linecap="round"/></svg>', blocks:[{title:'التزامنا',body:'نلتزم بحماية خصوصية زوار البوابة.'},{title:'البيانات',list:['لا نجمع بيانات تلقائياً','أدوات تحليل مجهولة','لا نشارك مع أطراف','تشفير حديث']}]},
+    terms: { eyebrow:'قانوني', title:'شروط الاستخدام', desc:'الشروط والأحكام.', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6Z" stroke-linejoin="round"/></svg>', blocks:[{title:'قبول الشروط',body:'باستخدامك للبوابة فإنك توافق على الالتزام بالشروط.'},{title:'مسموح',list:['شخصي غير تجاري','الاطلاع على البيانات','المشاركة مع الإشارة للمصدر']}]},
+    accessibility: { eyebrow:'وصول', title:'إمكانية الوصول', desc:'التزامنا بمعايير الوصول الشامل.', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="4" r="2"/><path d="M4 8h16M9 8v6l-2 8M15 8v6l2 8" stroke-linecap="round"/></svg>', blocks:[{title:'التزامنا',body:'نلتزم بتطبيق معايير WCAG 2.1 AA.'},{title:'الميزات',list:['تنقل بلوحة المفاتيح','نصوص بديلة','تباين لوني','قارئات الشاشة','تكبير النص','تقليل الحركة']}]},
+    archive: { eyebrow:'أرشيف', title:'الأرشيف الإعلامي', desc:'أرشيف شامل.', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="4" rx="1"/><path d="M5 8v12M19 8v12M3 20h18" stroke-linecap="round"/></svg>', blocks:[{title:'الأرشيف',body:'يضم جميع البيانات والتصريحات الرسمية.'}]}
+  },
+
+  KEYS: {
+    NEWS: 'mod_news_v7',
+    TICKER: 'mod_ticker_v7',
+    SETTINGS: 'mod_settings_v7',
+    MOSTREAD: 'mod_mostread_v7',
+    ELITE: 'mod_elite_v7'
+  }
+};
+
 })();
